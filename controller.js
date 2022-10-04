@@ -1,5 +1,12 @@
 const model = require('./model.js');
 
+function bonk(req, res, next) {
+    res.writeHead(302, {
+        location: "https://knowyourmeme.com/photos/1916585-bonk-cheems",
+    });
+    res.end();
+}
+
 function error404(req, res, next) {
     res.status(404);
     res.render('404');
@@ -46,7 +53,8 @@ function get_calendar_url(req, res, next) {
 function get_ical(req, res, next) {
     const id = req.query.id;
     let ips = (req.get("X-Forwarded-For") || req.connection.remoteAddress).split(",");
-    model.getICalendarEvents(id, req.get("User-Agent"), ips[ips.length - 1], function (unibo_cal) {
+    let alert = req.query.alert === undefined ? null : parseInt(req.query.alert);
+    model.getICalendarEvents(id, req.get("User-Agent"), ips[ips.length - 1], alert, function (unibo_cal) {
         res.type("text/calendar");
         res.set({
             'Cache-Control': 'private',
@@ -87,6 +95,7 @@ exports.dispatcher = function (app) {
     app.get('/get_ical', get_ical);
     app.get('/get_courses_given_area', get_courses_given_area);
     app.post('/get_curricula_given_course', get_curricula_given_course);
+    app.get('/bonk', bonk);
     app.use(error404); // 404 catch-all handler (middleware)
     app.use(error500); // 500 error handler (middleware)
 }
