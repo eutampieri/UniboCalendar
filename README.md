@@ -21,6 +21,6 @@ Questo sistema è stato sviluppato quasi interamente da due persone nel corso di
 - [ ] PERFORMANCE: Passare da Sqlite3 a [MariaDB](https://mariadb.org/)
 - [ ] PERFORMANCE: Convertire il codice da javascript ES5 a ES6
 - [ ] STATISTICHE: Aggiungere il supporto a [Grafana](https://grafana.com) per le informazioni che ora vengono solamente loggate nella cartella logs/
-- [ ] STATISTICHE: Conformare il servizio alla normativa GDPR
+- [X] STATISTICHE: Conformare il servizio alla normativa GDPR
 - [ ] NUOVE FUNZIONI: Creare un logo personalizzato
 - [ ] NUOVE FUNZIONI: Aggiungere l'inserimento del calendario anche su Outlook Calendar
